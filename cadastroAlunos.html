@@ -34,14 +34,14 @@
     <h3 align="center">
       <img src="https://site.fatecfranca.edu.br/images/logo-fatec-franca-15-anos.png" width=50% height=50%
         alt="logo fatec"><br /><br />
-      <strong>Cadastro de Professores</strong>
+      <strong>Cadastro de Alunos</strong>
     </h3>
     <br />
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="row">
           <div class="col-md-6">
-            <h3 class="panel-title">Professores</h3>
+            <h3 class="panel-title">Alunos</h3>
           </div>
           <div class="col-md-6" align="right">
             <input type="button" class="btn btn-success btn-xs" @click="openModel" value="Add" />
@@ -120,7 +120,7 @@
       allData: "",
       myModel: false,
       actionButton: "Insert",
-      dynamicTitle: "Adicionar Professor",
+      dynamicTitle: "Adicionar Aluno",
     },
     methods: {
       fetchAllData: function () {
@@ -136,14 +136,14 @@
         application.first_name = "";
         application.last_name = "";
         application.actionButton = "Insert";
-        application.dynamicTitle = "Adicionar Professor";
+        application.dynamicTitle = "Adicionar Aluno";
         application.myModel = true;
       },
       submitData: function () {
         if (application.first_name != "" && application.last_name != "") {
           if (application.actionButton == "Insert") {
             axios
-              .post("professor.php", {
+              .post("cadastro.php", {
                 action: "insert",
                 firstName: application.first_name,
                 lastName: application.last_name,
@@ -158,7 +158,7 @@
           }
           if (application.actionButton == "Update") {
             axios
-              .post("professor.php", {
+              .post("cadastro.php", {
                 action: "update",
                 firstName: application.first_name,
                 lastName: application.last_name,
@@ -179,7 +179,7 @@
       },
       fetchData: function (id) {
         axios
-          .post("professor.php", {
+          .post("cadastro.php", {
             action: "fetchSingle",
             id: id,
           })
@@ -193,9 +193,9 @@
           });
       },
       deleteData: function (id) {
-        if (confirm("Você tem certeza que deseja deletar esse professor?")) {
+        if (confirm("Você tem certeza que deseja deletar esse aluno?")) {
           axios
-            .post("professor.php", {
+            .post("cadastro.php", {
               action: "delete",
               id: id,
             })
